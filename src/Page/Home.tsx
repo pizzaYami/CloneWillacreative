@@ -22,27 +22,42 @@ const rightVideo =
 const Home = () => {
   const [leftNum, setLeftNum] = useState(0);
   const [rightNum, setRighttNum] = useState(3);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
-  const leftPlusNum = () => {
-    setLeftNum(leftNum + 1);
+  const leftPlusNum = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    setTimeout(function () {
+      setLeftNum(leftNum + 1);
+    }, 100);
   };
 
-  const rightPlusNum = () => {
-    setRighttNum(rightNum + 1);
+  const rightPlusNum = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    setTimeout(function () {
+      setRighttNum(rightNum + 1);
+    }, 100);
   };
 
-  console.log(rightNum % 4);
+  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    event.stopPropagation();
+    setMousePosition({
+      x: event.clientX,
+      y: event.clientY,
+    });
+  };
 
   return (
-    <ContainerS>
-      <LeftScreenS onMouseEnter={leftPlusNum} leftNum={leftNum}>
-        <img src={leftScreenData[leftNum % 4]} alt='leftscreen' />
-        <video src={leftVideo} muted loop autoPlay />
-      </LeftScreenS>
-      <RightScreenS onMouseOver={rightPlusNum} rightNum={rightNum}>
-        <img src={rightScreenData[rightNum % 4]} alt='rightscreen' />
-        <video src={rightVideo} muted loop autoPlay />
-      </RightScreenS>
+    <ContainerS onMouseMove={handleMouseMove}>
+      <ScreenContainerS>
+        <LeftScreenS onMouseEnter={leftPlusNum} leftNum={leftNum}>
+          <img src={leftScreenData[leftNum % 4]} alt='leftscreen' />
+          <video src={rightVideo} muted loop autoPlay />
+        </LeftScreenS>
+        {/* <MiddleScreenS></MiddleScreenS> */}
+        <RightScreenS onMouseEnter={rightPlusNum} rightNum={rightNum}>
+          <img src={rightScreenData[rightNum % 4]} alt='lefrightscreentscreen' />
+          <video src={rightVideo} muted loop autoPlay />
+        </RightScreenS>
+      </ScreenContainerS>
+      <HomeCursor mousePosition={mousePosition}>willacreative.com</HomeCursor>
     </ContainerS>
   );
 };
@@ -52,15 +67,22 @@ export default Home;
 const ContainerS = styled.main`
   width: 100vw;
   height: 100vh;
+  cursor: none;
+`;
+
+const ScreenContainerS = styled.section`
+  position: relative;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  overflow: hidden;
   display: flex;
   @media screen and (max-width: 768px) {
     flex-direction: column;
+    font-size: 26px;
   }
 `;
 
-const LeftScreenS = styled.section<{ leftNum: number }>`
+const LeftScreenS = styled.article<{ leftNum: number }>`
   width: 100%;
   height: 100%;
   img,
@@ -73,11 +95,11 @@ const LeftScreenS = styled.section<{ leftNum: number }>`
     display: ${(props) => (props.leftNum % 4 === 3 ? 'none' : null)};
   }
   video {
-    z-index: ${(props) => (props.leftNum % 4 === 3 ? null : 'none')};
+    display: ${(props) => (props.leftNum % 4 === 3 ? null : 'none')};
   }
 `;
 
-const RightScreenS = styled.section<{ rightNum: number }>`
+const RightScreenS = styled.article<{ rightNum: number }>`
   width: 100%;
   height: 100%;
   img,
@@ -90,6 +112,23 @@ const RightScreenS = styled.section<{ rightNum: number }>`
     display: ${(props) => (props.rightNum % 4 === 3 ? 'none' : null)};
   }
   video {
-    z-index: ${(props) => (props.rightNum % 4 === 3 ? null : 'none')};
+    display: ${(props) => (props.rightNum % 4 === 3 ? null : 'none')};
   }
+`;
+
+const HomeCursor = styled.div<{ mousePosition: { x: number; y: number } }>`
+  position: absolute;
+  left: ${(props) => `${props.mousePosition.x - 141}px`};
+  top: ${(props) => `${props.mousePosition.y}px`};
+  opacity: 1;
+  white-space: nowrap;
+  text-transform: uppercase;
+  mix-blend-mode: difference;
+  font-size: 32px;
+  font-weight: normal;
+  line-height: normal;
+  letter-spacing: -0.64px;
+  color: #fff;
+  z-index: 999;
+  pointer-events: none;
 `;

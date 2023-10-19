@@ -46,7 +46,6 @@ const GlobalStyle = createGlobalStyle`
   
   *{
     margin: 0;
-    cursor: default;
   }
 
   h1, h2, p, li, div{
@@ -103,7 +102,6 @@ const GlobalStyle = createGlobalStyle`
     background-color: transparent;
     border: 0;
     font-family: 'Noto Sans KR', sans-serif;
-    cursor: default;
   }
 
   textarea{
