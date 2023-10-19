@@ -6,7 +6,7 @@ function App() {
   return (
     <Routes>
       <Route path='/' element={<Home />} />
-      <Route path='/about' element={<div>어바웃페이지임</div>} />
+      {/* <Route path='/about' element={<div>어바웃페이지임</div>} /> */}
     </Routes>
   );
 }

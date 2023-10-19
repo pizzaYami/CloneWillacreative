@@ -58,7 +58,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Noto Sans KR', sans-serif;
     font-style: normal;
     line-height: normal;    
-    margin:0;
+    margin: 0;
   }
 
   ul {
