@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 const leftScreenData = [
@@ -20,6 +21,7 @@ const rightVideo =
   'https://player.vimeo.com/progressive_redirect/playback/790304859/rendition/1080p/file.mp4?loc=external&signature=5fcf83fa08820463173a638eff04c5028ac14b09fad588c0aa0f58586403ff6d';
 
 const Home = () => {
+  const navigate = useNavigate();
   const [leftNum, setLeftNum] = useState(0);
   const [rightNum, setRighttNum] = useState(3);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -43,14 +45,16 @@ const Home = () => {
     });
   };
 
+  const handleNavigate = () => {
+    navigate('/work');
+  };
   return (
-    <ContainerS onMouseMove={handleMouseMove}>
+    <ContainerS onMouseMove={handleMouseMove} onClick={handleNavigate}>
       <ScreenContainerS>
         <LeftScreenS onMouseEnter={leftPlusNum} leftNum={leftNum}>
           <img src={leftScreenData[leftNum % 4]} alt='leftscreen' />
           <video src={leftVideo} muted loop autoPlay />
         </LeftScreenS>
-        {/* <MiddleScreenS></MiddleScreenS> */}
         <RightScreenS onMouseEnter={rightPlusNum} rightNum={rightNum}>
           <img src={rightScreenData[rightNum % 4]} alt='lefrightscreentscreen' />
           <video src={rightVideo} muted loop autoPlay />
@@ -64,16 +68,16 @@ const Home = () => {
 export default Home;
 
 const ContainerS = styled.main`
-  width: 100vw;
-  height: 100vh;
+  width: 100dvw;
+  height: 100dvh;
+  object-fit: cover;
   cursor: none;
 `;
 
 const ScreenContainerS = styled.section`
+  display: flex;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  display: flex;
   @media screen and (max-width: 768px) {
     flex-direction: column;
     font-size: 26px;
@@ -81,7 +85,7 @@ const ScreenContainerS = styled.section`
 `;
 
 const LeftScreenS = styled.article<{ leftNum: number }>`
-  width: 100%;
+  width: 50%;
   height: 100%;
   img,
   video {
@@ -98,7 +102,8 @@ const LeftScreenS = styled.article<{ leftNum: number }>`
 `;
 
 const RightScreenS = styled.article<{ rightNum: number }>`
-  width: 100%;
+  object-fit: cover;
+  width: 50%;
   height: 100%;
   img,
   video {

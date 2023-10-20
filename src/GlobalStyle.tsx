@@ -44,8 +44,10 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   
+
   *{
     margin: 0;
+    box-sizing: border-box;
   }
 
   h1, h2, p, li, div{
