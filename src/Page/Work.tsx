@@ -4,7 +4,7 @@ import Header from '../Component/Header';
 const Work = () => {
   return (
     <WorkContainer>
-      <Header></Header>
+      <Header />
       <NavBarS>
         <ul>
           <li>all</li>
@@ -12,10 +12,13 @@ const Work = () => {
           <li>content</li>
           <li>branding</li>
         </ul>
-        <img
-          src='https://willacreative.com/wp-content/themes/twentytwelve/images/circle-animation.png'
-          alt='colorCircle'
-        />
+        <ChangeColorCircleS>
+          <span>we don't do color but you can</span>
+          <img
+            src='https://willacreative.com/wp-content/themes/twentytwelve/images/circle-animation.png'
+            alt='colorCircle'
+          />
+        </ChangeColorCircleS>
       </NavBarS>
     </WorkContainer>
   );
@@ -29,11 +32,11 @@ const WorkContainer = styled.main`
 `;
 
 const NavBarS = styled.nav`
-  padding: 32px 25px;
-  margin-top: 73px;
+  padding: 32px 39px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-weight: 600;
   ul {
     display: flex;
     gap: 24px;
@@ -43,23 +46,30 @@ const NavBarS = styled.nav`
     text-transform: uppercase;
     cursor: pointer;
   }
+`;
+
+const ChangeColorCircleS = styled.div`
+  display: flex;
+  align-items: center;
+
+  span {
+    margin-right: 10px;
+  }
   img {
-    width: 22px;
-    height: 22px;
-    animation-name: move;
-    transition-duration: 2s;
-    animation-iteration-count: infinite;
+    width: 31px;
+    height: 31px;
+    animation: spin 5s linear infinite;
   }
 
-  @keyframes move {
-    /* @keyframes 뒤에 애니메이션을 대표하는 임의의 이름 move를 부여 */
+  img:hover {
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin {
     from {
-      /* 애니메이션 시작 시점 */
-      rotate: 0;
+      transform: rotate(0deg);
     }
     to {
-      /* 애니메이션 종료 시점 */
-      rotate: 180;
+      transform: rotate(360deg);
     }
   }
 `;
