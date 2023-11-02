@@ -51,8 +51,9 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  h1, h2, p, li, div{
+  h1, h2, h3, p, li, div{
     white-space: pre-line;
+    font-weight: 500;
   }
   
   body {
