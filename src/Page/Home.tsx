@@ -55,6 +55,7 @@ const Home = () => {
           <img src={leftScreenData[leftNum % 4]} alt='leftscreen' />
           <video src={leftVideo} muted loop autoPlay />
         </LeftScreenS>
+        <CenterTextS>willacreatvie.com</CenterTextS>
         <RightScreenS onMouseEnter={rightPlusNum} rightNum={rightNum}>
           <img src={rightScreenData[rightNum % 4]} alt='lefrightscreentscreen' />
           <video src={rightVideo} muted loop autoPlay />
@@ -72,6 +73,9 @@ const ContainerS = styled.main`
   height: 100dvh;
   object-fit: cover;
   cursor: none;
+  @media screen and (max-width: 768px) {
+    cursor: pointer;
+  }
 `;
 
 const ScreenContainerS = styled.section`
@@ -80,11 +84,14 @@ const ScreenContainerS = styled.section`
   height: 100%;
   @media screen and (max-width: 768px) {
     flex-direction: column;
-    font-size: 26px;
   }
 `;
 
 const LeftScreenS = styled.article<{ leftNum: number }>`
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    height: 50vh;
+  }
   width: 50%;
   height: 100%;
   img,
@@ -101,7 +108,33 @@ const LeftScreenS = styled.article<{ leftNum: number }>`
   }
 `;
 
+const CenterTextS = styled.div`
+  display: none;
+
+  @media screen and (max-width: 768px) {
+    display: block;
+    clear: both;
+    height: 60px;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    z-index: 99;
+    background: white;
+    font-weight: 500;
+    font-size: 10.5vw;
+    line-height: 60px;
+    letter-spacing: -0.76px;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 5px;
+  }
+`;
+
 const RightScreenS = styled.article<{ rightNum: number }>`
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    height: 50vh;
+  }
   object-fit: cover;
   width: 50%;
   height: 100%;
@@ -120,18 +153,20 @@ const RightScreenS = styled.article<{ rightNum: number }>`
 `;
 
 const HomeCursor = styled.div<{ mousePosition: { x: number; y: number } }>`
-  position: absolute;
-  left: ${(props) => `${props.mousePosition.x - 141}px`};
-  top: ${(props) => `${props.mousePosition.y}px`};
-  opacity: 1;
-  white-space: nowrap;
-  text-transform: uppercase;
-  mix-blend-mode: difference;
-  font-size: 32px;
-  font-weight: normal;
-  line-height: normal;
-  letter-spacing: -0.64px;
-  color: #fff;
-  z-index: 999;
-  pointer-events: none;
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    left: ${(props) => `${props.mousePosition.x - 141}px`};
+    top: ${(props) => `${props.mousePosition.y}px`};
+    opacity: 1;
+    white-space: nowrap;
+    text-transform: uppercase;
+    mix-blend-mode: difference;
+    font-size: 32px;
+    font-weight: normal;
+    line-height: normal;
+    letter-spacing: -0.64px;
+    color: #fff;
+    z-index: 999;
+    pointer-events: none;
+  }
 `;
