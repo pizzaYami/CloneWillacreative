@@ -44,6 +44,7 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   
+  
 
   *{
     margin: 0;
@@ -58,7 +59,8 @@ const GlobalStyle = createGlobalStyle`
     color: var(--font-color1);
     font-family: 'Noto Sans KR', sans-serif;
     font-style: normal;
-    line-height: normal;    
+    line-height: normal; 
+    font-weight: 400;
     margin: 0;
   }
 
@@ -69,13 +71,6 @@ const GlobalStyle = createGlobalStyle`
 
   li{
     list-style: none;
-
-    &.button{
-      &.active{
-        background: #000;
-        color: white;
-      }
-    }
   }
 
   h1 {
@@ -100,16 +95,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   button {
-    color: black;
-    background-color: transparent;
     border: 0;
     font-family: 'Noto Sans KR', sans-serif;
-  }
-
-  textarea{
-    padding: 1rem;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 1rem;
   }
 `;
 
