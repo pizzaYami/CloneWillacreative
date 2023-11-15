@@ -5,7 +5,7 @@ import { styled } from 'styled-components';
 const Header = () => {
   const navigate = useNavigate();
   const [isLazy, setIsLazy] = useState(false);
-  setInterval(() => {
+  setTimeout(() => {
     setIsLazy(true);
   }, 100);
   return (
@@ -55,7 +55,7 @@ const HeaderWrapperS = styled.header`
     left: 0;
     background: currentColor;
     height: 1px;
-    width: 1px;
+    width: 0px;
     opacity: 0.5;
   }
 
