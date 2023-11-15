@@ -3,51 +3,7 @@ import { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 import Header from '../Component/Header';
 import NavBar from '../Component/NavBar';
-
-const workData = [
-  {
-    id: 0,
-    image: 'https://willacreative.com/wp-content/uploads/adanola1-1024x758.jpg',
-    title: 'adanola',
-    content: 'strategy, web, branding',
-  },
-  {
-    id: 1,
-    image: 'https://willacreative.com/wp-content/uploads/essio1-1024x758.jpg',
-    title: 'essio',
-    content: 'web, content, branding, vntrs',
-  },
-  {
-    id: 2,
-    image: 'https://willacreative.com/wp-content/uploads/bs-841x1024.jpg',
-    title: 'beauty sandwich',
-    content: 'web, branding, packaging',
-  },
-  {
-    id: 3,
-    image: 'https://willacreative.com/wp-content/uploads/hiskin-1-841x1024.jpg',
-    title: 'hi skin',
-    content: 'web, content, branding, strategy',
-    video:
-      'https://player.vimeo.com/progressive_redirect/playback/793720801/rendition/720p/file.mp4?loc=external&signature=abcef5dd0c9b2971d48639fbf26dd6cc232355df65a49ecef569cc504cdb36d5',
-  },
-  {
-    id: 4,
-    image: 'https://willacreative.com/wp-content/uploads/ivi-841x1024.jpg',
-    title: 'ivi',
-    content: 'web',
-    video:
-      'https://player.vimeo.com/progressive_redirect/playback/850345613/rendition/360p/file.mp4?loc=external&signature=4cb3adb2a1d538101ef09ae7ad43ecc6b82adc8bd36ffd655fdc39a97da7707e',
-  },
-  {
-    id: 5,
-    title: 'Olive Ateliers',
-    content: 'web',
-    video:
-      'https://player.vimeo.com/progressive_redirect/playback/830348745/rendition/720p/file.mp4?loc=external&signature=da33dca1e705dfec770ef9439a01c30818431833c1c885c4314d4aeee5a5193c',
-  },
-];
-
+import { workData } from '../Data/workData';
 const Work = () => {
   return (
     <WorkContainer>
@@ -83,6 +39,12 @@ const Work = () => {
             </li>
           </ul>
         </WorkDoSection>
+        <WorkItem workData={workData[6]} row={2} />
+        <WorkItem workData={workData[7]} row={2} />
+        <WorkItem workData={workData[8]} row={4} />
+        <WorkItem workData={workData[9]} row={4} />
+        <WorkItem workData={workData[10]} row={4} />
+        <WorkItem workData={workData[11]} row={4} />
       </WorkContainerS>
     </WorkContainer>
   );
