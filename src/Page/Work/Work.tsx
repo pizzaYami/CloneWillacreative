@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 import Header from '../../Component/Header';
 import NavBar from '../../Component/NavBar';
