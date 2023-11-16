@@ -101,8 +101,6 @@ const workData = [
     image: 'https://willacreative.com/wp-content/uploads/willa-kinn.png',
     title: 'kinn',
     content: 'web',
-    video:
-      'https://player.vimeo.com/progressive_redirect/playback/788789128/rendition/1080p/file.mp4?loc=external&signature=540be6bdb5604d08d70901c516bcbf2429a2c2eade2373444b37e1946c951898',
   },
   {
     id: 15,

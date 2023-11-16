@@ -26,6 +26,10 @@ const Work = () => {
         <WorkItem workData={workData[10]} row={4} />
         <WorkItem workData={workData[11]} row={4} />
         <WorkSlide />
+        <WorkItem workData={workData[12]} row={4} />
+        <WorkItem workData={workData[13]} row={4} />
+        <WorkItem workData={workData[14]} row={4} />
+        <WorkItem workData={workData[15]} row={4} />
       </WorkContainerS>
     </WorkContainer>
   );
