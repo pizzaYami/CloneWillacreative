@@ -13,27 +13,27 @@ const WorkSlideData = [
     img: '',
   },
   {
-    key: 0,
+    key: 1,
     img: awwords,
   },
   {
-    key: 1,
+    key: 2,
     img: byrdie,
   },
   {
-    key: 2,
+    key: 3,
     img: cut,
   },
   {
-    key: 3,
+    key: 4,
     img: digiday,
   },
   {
-    key: 4,
+    key: 5,
     img: forbes,
   },
   {
-    key: 5,
+    key: 6,
     img: mindsParkls,
   },
   {
@@ -41,27 +41,27 @@ const WorkSlideData = [
     img: '',
   },
   {
-    key: 0,
+    key: 1,
     img: awwords,
   },
   {
-    key: 1,
+    key: 2,
     img: byrdie,
   },
   {
-    key: 2,
+    key: 3,
     img: cut,
   },
   {
-    key: 3,
+    key: 4,
     img: digiday,
   },
   {
-    key: 4,
+    key: 5,
     img: forbes,
   },
   {
-    key: 5,
+    key: 6,
     img: mindsParkls,
   },
 ];
@@ -85,7 +85,6 @@ const WorkSlide = () => {
     });
     WorkSlideData.push(WorkSlideData[slideNum % 6]);
   }, 2000);
-
   return (
     <Container className={isLazy ? 'active' : ''}>
       <ItemContainer>
