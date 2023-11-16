@@ -36,6 +36,34 @@ const WorkSlideData = [
     key: 5,
     img: mindsParkls,
   },
+  {
+    key: 0,
+    img: '',
+  },
+  {
+    key: 0,
+    img: awwords,
+  },
+  {
+    key: 1,
+    img: byrdie,
+  },
+  {
+    key: 2,
+    img: cut,
+  },
+  {
+    key: 3,
+    img: digiday,
+  },
+  {
+    key: 4,
+    img: forbes,
+  },
+  {
+    key: 5,
+    img: mindsParkls,
+  },
 ];
 
 const WorkSlide = () => {
