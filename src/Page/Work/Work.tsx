@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import Footer from '../../Component/Footer';
 import Header from '../../Component/Header';
 import NavBar from '../../Component/NavBar';
 import { workData } from '../../Data/workData';
@@ -31,6 +32,7 @@ const Work = () => {
         <WorkItem workData={workData[14]} row={4} />
         <WorkItem workData={workData[15]} row={4} />
       </WorkContainerS>
+      <Footer />
     </WorkContainer>
   );
 };
