@@ -1,21 +1,22 @@
 import { styled } from 'styled-components';
 
-const NavBar = () => {
+const NavBar = ({ bgBtn, list }: { bgBtn: boolean; list: string[] }) => {
   return (
     <NavBarS>
       <ul>
-        <li>all</li>
-        <li>web</li>
-        <li>content</li>
-        <li>branding</li>
+        {list.map((item) => {
+          return <li>{item}</li>;
+        })}
       </ul>
-      <BGcolorBtn>
-        <span className=''>we don't do color but you can</span>
-        <img
-          src='https://willacreative.com/wp-content/themes/twentytwelve/images/circle-animation.png'
-          alt='colorCircle'
-        />
-      </BGcolorBtn>
+      {bgBtn ? (
+        <BGBtn>
+          <span className=''>we don't do color but you can</span>
+          <img
+            src='https://willacreative.com/wp-content/themes/twentytwelve/images/circle-animation.png'
+            alt='colorCircle'
+          />
+        </BGBtn>
+      ) : null}
     </NavBarS>
   );
 };
@@ -43,7 +44,7 @@ const NavBarS = styled.nav`
   }
 `;
 
-const BGcolorBtn = styled.div`
+const BGBtn = styled.div`
   display: flex;
   align-items: center;
 

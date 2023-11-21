@@ -11,7 +11,7 @@ const Work = () => {
   return (
     <WorkContainer>
       <Header />
-      <NavBar />
+      <NavBar bgBtn={true} list={['all', 'web', 'content', 'branding']} />
       <WorkContainerS>
         <WorkItem workData={workData[0]} row={2} />
         <WorkItem workData={workData[1]} row={2} />
