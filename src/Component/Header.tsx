@@ -1,36 +1,63 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 const Header = () => {
   const navigate = useNavigate();
   const [isLazy, setIsLazy] = useState(false);
-  setTimeout(() => {
-    setIsLazy(true);
-  }, 100);
+  const [currentPage, setCurrentPage] = useState('work');
+
+  const seachCurrentPage = () => {
+    if (window.location.pathname === '/work') {
+      setCurrentPage('work');
+    }
+    if (window.location.pathname === '/vntrs') {
+      setCurrentPage('vntrs');
+    }
+    if (window.location.pathname === '/content') {
+      setCurrentPage('content');
+    }
+    if (window.location.pathname === '/info') {
+      setCurrentPage('info');
+    }
+  };
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLazy(true);
+    }, 100);
+    seachCurrentPage();
+  }, []);
+
   return (
     <HeaderWrapperS className={isLazy ? 'active' : ''}>
       <HeaderS>
         <li
-          className='work header'
+          className={currentPage === 'work' ? 'work currentPage' : 'work'}
           onClick={() => {
             navigate('/work');
           }}
         >
           work
         </li>
-        <li className='vntrs header'>VNTRS</li>
         <li
-          className='url header '
+          className={currentPage === 'vntrs' ? 'vntrs currentPage' : 'vntrs'}
+          onClick={() => {
+            navigate('/vntrs');
+          }}
+        >
+          vntrs
+        </li>
+        <li
+          className='url '
           id='header-center'
           onClick={() => {
             navigate('/');
           }}
         >
-          WILLACREATIVE.COM
+          willacreative.com
         </li>
-        <li className='content header'>CONTENT</li>
-        <li className='info header'>INFO</li>
+        <li className={currentPage === 'content' ? 'content currentPage' : 'content'}>content</li>
+        <li className={currentPage === 'info' ? 'info currentPage' : 'info'}>info</li>
       </HeaderS>
     </HeaderWrapperS>
   );
@@ -62,9 +89,9 @@ const HeaderWrapperS = styled.header`
   @media screen and (max-width: 767px) {
     padding: 2px 10px 25px;
     height: auto;
-    .header {
-      font-size: 16px;
-    }
+
+    font-size: 16px;
+
     #header-center {
       width: 100%;
       order: 0;
@@ -75,9 +102,9 @@ const HeaderWrapperS = styled.header`
 
   @media screen and (min-width: 768px) and (max-width: 1198px) {
     padding: 22.5px 38px;
-    .header {
-      font-size: 22px;
-    }
+
+    font-size: 22px;
+
     &.active {
       &::after {
         width: 100%;
@@ -88,9 +115,9 @@ const HeaderWrapperS = styled.header`
 
   @media screen and (min-width: 1199px) {
     padding: 22.5px 38px;
-    .header {
-      font-size: 28px;
-    }
+
+    font-size: 28px;
+
     &.active {
       &::after {
         width: 100%;
@@ -106,6 +133,7 @@ const HeaderS = styled.ul`
   justify-content: space-between;
   flex-wrap: wrap;
   width: 100%;
+  text-transform: uppercase;
   li {
     font-weight: 500;
     display: flex;
@@ -121,11 +149,8 @@ const HeaderS = styled.ul`
     display: flex;
     align-items: center;
     justify-content: center;
-    text-decoration: underline;
+
     min-width: 62px;
-    &:hover {
-      text-transform: uppercase;
-    }
   }
   .vntrs {
     order: 2;
@@ -142,5 +167,12 @@ const HeaderS = styled.ul`
   .info {
     order: 5;
     min-width: 48px;
+  }
+  .currentPage {
+    text-decoration: underline;
+    text-transform: lowercase;
+    &:hover {
+      text-transform: uppercase;
+    }
   }
 `;
