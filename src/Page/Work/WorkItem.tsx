@@ -16,6 +16,10 @@ interface WorkItemType {
 const WorkItem = ({ workData, row, videoFirst }: WorkItemType) => {
   const [dataCase, setDataCase] = useState(0);
   const { image, title, content, video } = workData;
+  // 이미지만 있으면 1
+  // 이미지와 비디오 있으며 이미지 먼저 보여주면 2
+  // 이미지와 비디오 있으며 비디오 먼저 보여주면 3
+  // 비디오만 있으면 4
   useEffect(() => {
     if (image && !video) setDataCase(1);
     if (image && video) setDataCase(2);
