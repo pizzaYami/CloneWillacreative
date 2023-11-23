@@ -53,12 +53,10 @@ const Footer = () => {
 export default Footer;
 
 const Container = styled.footer`
-  width: 100%;
+  width: 100%;s
   font-size: 16px;
   padding: 0 39px;
   display: flex;
-  position: fixed;
-  bottom: 0px;
   box-sizing: border-box;
 `;
 

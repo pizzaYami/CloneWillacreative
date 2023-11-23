@@ -30,12 +30,14 @@ export default Vntrs;
 
 const Container = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 const ContentWrapper = styled.div`
   width: 100%;
-  height: 100%;
   video {
     height: 650px;
     width: 100%;
