@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
-import awwords from '../../img/awwords.svg';
-import byrdie from '../../img/byrdie.svg';
-import cut from '../../img/cut.svg';
-import digiday from '../../img/digiday.svg';
-import forbes from '../../img/forbes.svg';
-import mindsParkls from '../../img/mindsParkls.svg';
+import cultgaia from '../../img/cultgaia.svg';
+import barcord from '../../img/barcord.svg';
+import calpak from '../../img/calpak.svg';
+import dosist from '../../img/dosist.svg';
+import nicholas from '../../img/nicholas.svg';
+import facile from '../../img/facile.svg';
 
 const InfoSlideData = [
   {
@@ -14,27 +14,27 @@ const InfoSlideData = [
   },
   {
     key: 1,
-    img: awwords,
+    img: cultgaia,
   },
   {
     key: 2,
-    img: byrdie,
+    img: barcord,
   },
   {
     key: 3,
-    img: cut,
+    img: calpak,
   },
   {
     key: 4,
-    img: digiday,
+    img: dosist,
   },
   {
     key: 5,
-    img: forbes,
+    img: nicholas,
   },
   {
     key: 6,
-    img: mindsParkls,
+    img: facile,
   },
   {
     key: 0,
@@ -42,27 +42,27 @@ const InfoSlideData = [
   },
   {
     key: 1,
-    img: awwords,
+    img: cultgaia,
   },
   {
     key: 2,
-    img: byrdie,
+    img: barcord,
   },
   {
     key: 3,
-    img: cut,
+    img: calpak,
   },
   {
     key: 4,
-    img: digiday,
+    img: dosist,
   },
   {
     key: 5,
-    img: forbes,
+    img: nicholas,
   },
   {
     key: 6,
-    img: mindsParkls,
+    img: facile,
   },
 ];
 
@@ -102,6 +102,7 @@ export default InfoSlide;
 
 const Container = styled.div`
   width: 100%;
+  float: left;
   margin: 50px 0 85px 0;
   padding: 0 10px;
   &::before {
