@@ -148,7 +148,12 @@ const ItemContainer = styled.div`
     width: 50px;
     height: 50px;
     margin: 10px 25px 6px 0;
-    background-image: linear-gradient(to right, #fff 0%, #fff 50%, rgba(255, 255, 255, 0) 100%);
+    background-image: linear-gradient(
+      to right,
+      #000000 0%,
+      #000000 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
     position: absolute;
     left: 0;
     top: -24px;
@@ -159,7 +164,12 @@ const ItemContainer = styled.div`
     width: 50px;
     height: 50px;
     margin: 10px 0 6px 25px;
-    background-image: linear-gradient(to left, #fff 0%, #fff 50%, rgba(255, 255, 255, 0) 100%);
+    background-image: linear-gradient(
+      to left,
+      #000000 0%,
+      #000000 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
     position: absolute;
     right: 0;
     top: -24px;
