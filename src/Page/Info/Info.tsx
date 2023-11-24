@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 import Footer from '../../Component/Footer';
 import Header from '../../Component/Header';
+import Capabilite from './Capabilites';
 import InfoSlide from './InfoSlide';
 
 const Info = () => {
@@ -44,6 +45,8 @@ const Info = () => {
         </div>
       </InfoClient>
       <InfoSlide></InfoSlide>
+      <Capabilite></Capabilite>
+      <Careers></Careers>
       <Footer />
     </Container>
   );
@@ -53,7 +56,7 @@ export default Info;
 
 const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: black;
   color: white;
 `;
@@ -107,3 +110,5 @@ const InfoClient = styled.div`
     color: white;
   }
 `;
+
+const Careers = styled.div``;
