@@ -57,7 +57,14 @@ const Header = () => {
           willacreative.com
         </li>
         <li className={currentPage === 'content' ? 'content currentPage' : 'content'}>content</li>
-        <li className={currentPage === 'info' ? 'info currentPage' : 'info'}>info</li>
+        <li
+          className={currentPage === 'info' ? 'info currentPage' : 'info'}
+          onClick={() => {
+            navigate('/info');
+          }}
+        >
+          info
+        </li>
       </HeaderS>
     </HeaderWrapperS>
   );
@@ -70,7 +77,6 @@ const HeaderWrapperS = styled.header`
   top: 0px;
   left: 0px;
   letter-spacing: -0.64px;
-  background-color: white;
   z-index: 100;
   transition: top 0.2s ease-in-out;
   position: relative;
