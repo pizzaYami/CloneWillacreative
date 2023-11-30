@@ -95,9 +95,7 @@ const HeaderWrapperS = styled.header`
   @media screen and (max-width: 767px) {
     padding: 2px 10px 25px;
     height: auto;
-
     font-size: 16px;
-
     #header-center {
       width: 100%;
       order: 0;
@@ -106,11 +104,9 @@ const HeaderWrapperS = styled.header`
     }
   }
 
-  @media screen and (min-width: 768px) and (max-width: 1198px) {
+  @media screen and (min-width: 768px) {
     padding: 22.5px 38px;
-
     font-size: 22px;
-
     &.active {
       &::after {
         width: 100%;
@@ -119,17 +115,14 @@ const HeaderWrapperS = styled.header`
     }
   }
 
+  @media screen and (min-width: 990px) {
+    padding: 22.5px 38px;
+    font-size: 28px;
+  }
+
   @media screen and (min-width: 1199px) {
     padding: 22.5px 38px;
-
-    font-size: 28px;
-
-    &.active {
-      &::after {
-        width: 100%;
-        transition: width 0.9s ease-in;
-      }
-    }
+    font-size: 32px;
   }
 `;
 
