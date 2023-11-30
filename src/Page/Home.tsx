@@ -82,6 +82,7 @@ const ScreenContainerS = styled.section`
   display: flex;
   width: 100%;
   height: 100%;
+
   @media screen and (max-width: 768px) {
     flex-direction: column;
   }
@@ -110,7 +111,6 @@ const LeftScreenS = styled.article<{ leftNum: number }>`
 
 const CenterTextS = styled.div`
   display: none;
-
   @media screen and (max-width: 768px) {
     display: block;
     clear: both;
@@ -161,12 +161,15 @@ const HomeCursor = styled.div<{ mousePosition: { x: number; y: number } }>`
     white-space: nowrap;
     text-transform: uppercase;
     mix-blend-mode: difference;
-    font-size: 32px;
+    font-size: 26px;
     font-weight: normal;
     line-height: normal;
     letter-spacing: -0.64px;
     color: #fff;
     z-index: 999;
     pointer-events: none;
+  }
+  @media screen and (min-width: 990px) {
+    font-size: 32px;
   }
 `;
