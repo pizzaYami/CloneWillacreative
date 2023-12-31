@@ -51,6 +51,7 @@ const BGBtn = styled.div`
   span {
     margin-right: 10px;
     display: none;
+    cursor: pointer;
   }
 
   img {
@@ -61,6 +62,7 @@ const BGBtn = styled.div`
 
   img:hover {
     animation: spin 1s linear infinite;
+    cursor: pointer;
   }
   @keyframes spin {
     from {
