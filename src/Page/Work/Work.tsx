@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 import Footer from '../../Component/Footer';
 import Header from '../../Component/Header';
@@ -9,14 +8,8 @@ import WorkItem from './WorkItem';
 import WorkSlide from './WorkSlide';
 
 const Work = () => {
-  const [bgColor, setBgColor] = useState('white');
-  useEffect(() => {
-    setBgColor(localStorage.getItem('bgColor'));
-    console.log(bgColor);
-  });
-
   return (
-    <WorkContainer bgColor={bgColor}>
+    <WorkContainer>
       <Header />
       <NavBar bgBtn={true} list={['all', 'web', 'content', 'branding']} />
       <WorkContainerS>
@@ -46,10 +39,9 @@ const Work = () => {
 
 export default Work;
 
-const WorkContainer = styled.main<{ bgColor: string }>`
+const WorkContainer = styled.main`
   width: 100%;
   height: 100%;
-  background: ${(props) => props.bgColor};
 `;
 
 const WorkContainerS = styled.div`
