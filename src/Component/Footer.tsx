@@ -1,32 +1,32 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 
 const Footer = () => {
-  const [num, setNum] = useState(0);
-  const [pade, setPade] = useState(true);
-  const now = new Date();
-  const hours = String(now.getHours()).padStart(2, '0');
-  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const [timer, setTimer] = useState(0);
 
-  setTimeout(() => {
-    setNum((props) => (props + 1) % 2);
-  }, 4000);
+  const date = new Date();
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
 
-  setTimeout(() => {
-    setPade((props) => !props);
-  }, 1000);
-  const proudThing = (): string => {
-    if (num === 0) {
+  useEffect(() => {
+    setInterval(() => {
+      setTimer((props) => (props + 1) % 3);
+    }, 2000);
+  }, [timer]);
+
+  const changeProud = (): string => {
+    if (timer === 0) {
       return 'latina';
     }
-    if (num === 1) {
+    if (timer === 1) {
       return 'founded';
     }
-    if (num === 2) {
+    if (timer === 2) {
       return 'female';
     }
     return '';
   };
+
   return (
     <Container>
       <FooterWrap>
@@ -43,7 +43,7 @@ const Footer = () => {
           <li>{`${hours}:${minutes} GMT+9`}</li>
           <li>© since 2012</li>
           <li>proudly </li>
-          <li className={pade ? 'fade_in' : 'fade_out'}>{proudThing()}</li>
+          {/* <li>{changeProud()}</li> */}
         </FooterRight>
       </FooterWrap>
     </Container>
