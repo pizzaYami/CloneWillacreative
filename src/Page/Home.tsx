@@ -48,17 +48,42 @@ const Home = () => {
   const handleNavigate = () => {
     navigate('/work');
   };
+
   return (
     <ContainerS onMouseMove={handleMouseMove} onClick={handleNavigate}>
       <ScreenContainerS>
-        <LeftScreenS onMouseEnter={leftPlusNum} leftNum={leftNum}>
-          <img src={leftScreenData[leftNum % 4]} alt='leftscreen' />
-          <video src={leftVideo} muted loop autoPlay />
+        <LeftScreenS onMouseEnter={leftPlusNum}>
+          {leftScreenData.map((imageUrl, index) => (
+            <img
+              src={imageUrl}
+              alt='leftScreen'
+              className={leftNum % 4 === index ? 'visible' : 'hidden'}
+            />
+          ))}
+          <video
+            src={leftVideo}
+            muted
+            loop
+            autoPlay
+            className={leftNum % 4 === 3 ? 'visible' : 'hidden'}
+          />
         </LeftScreenS>
         <CenterTextS>willacreatvie.com</CenterTextS>
-        <RightScreenS onMouseEnter={rightPlusNum} rightNum={rightNum}>
-          <img src={rightScreenData[rightNum % 4]} alt='lefrightscreentscreen' />
-          <video src={rightVideo} muted loop autoPlay />
+        <RightScreenS onMouseEnter={rightPlusNum}>
+          {rightScreenData.map((imageUrl, index) => (
+            <img
+              src={imageUrl}
+              alt='rightScreen'
+              className={rightNum % 4 === index ? 'visible' : 'hidden'}
+            />
+          ))}
+          <video
+            src={rightVideo}
+            muted
+            loop
+            autoPlay
+            className={rightNum % 4 === 3 ? 'visible' : 'hidden'}
+          />
         </RightScreenS>
       </ScreenContainerS>
       <HomeCursor mousePosition={mousePosition}>willacreative.com</HomeCursor>
@@ -88,24 +113,32 @@ const ScreenContainerS = styled.section`
   }
 `;
 
-const LeftScreenS = styled.article<{ leftNum: number }>`
+const LeftScreenS = styled.article`
+  transition: all 1s;
   @media screen and (max-width: 768px) {
     width: 100%;
     height: 50vh;
   }
   width: 50%;
   height: 100%;
+  position: relative;
+  overflow: hidden;
   img,
   video {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    transition: opacity 1s;
     object-fit: cover;
   }
-  img {
-    display: ${(props) => (props.leftNum % 4 === 3 ? 'none' : null)};
+  .visible {
+    opacity: 1;
   }
-  video {
-    display: ${(props) => (props.leftNum % 4 === 3 ? null : 'none')};
+
+  .hidden {
+    opacity: 0;
   }
 `;
 
@@ -130,7 +163,7 @@ const CenterTextS = styled.div`
   }
 `;
 
-const RightScreenS = styled.article<{ rightNum: number }>`
+const RightScreenS = styled.article`
   @media screen and (max-width: 768px) {
     width: 100%;
     height: 50vh;
@@ -138,17 +171,24 @@ const RightScreenS = styled.article<{ rightNum: number }>`
   object-fit: cover;
   width: 50%;
   height: 100%;
+  position: relative;
+  overflow: hidden;
   img,
   video {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    transition: opacity 1s;
     object-fit: cover;
   }
-  img {
-    display: ${(props) => (props.rightNum % 4 === 3 ? 'none' : null)};
+  .visible {
+    opacity: 1;
   }
-  video {
-    display: ${(props) => (props.rightNum % 4 === 3 ? null : 'none')};
+
+  .hidden {
+    opacity: 0;
   }
 `;
 
