@@ -1,25 +1,12 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { styled } from 'styled-components';
-import { leftScreenData, leftVideo, rightScreenData, rightVideo } from '../constants/homeConstant';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { styled } from "styled-components";
+import { leftScreenData, leftVideo, rightScreenData, rightVideo } from "../constants/homeConstant";
+import Screen from "../Component/Home/Screen";
 
 const Home = () => {
   const navigate = useNavigate();
-  const [leftNum, setLeftNum] = useState(0);
-  const [rightNum, setRighttNum] = useState(3);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  const leftPlusNum = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    setTimeout(function () {
-      setLeftNum(leftNum + 1);
-    }, 100);
-  };
-
-  const rightPlusNum = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    setTimeout(function () {
-      setRighttNum(rightNum + 1);
-    }, 100);
-  };
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     setMousePosition({
@@ -28,46 +15,12 @@ const Home = () => {
     });
   };
 
-  const handleNavigate = () => {
-    navigate('/work');
-  };
-
   return (
-    <ContainerS onMouseMove={handleMouseMove} onClick={handleNavigate}>
+    <ContainerS onMouseMove={handleMouseMove} onClick={() => navigate("/work")}>
       <ScreenContainerS>
-        <LeftScreenS onMouseEnter={leftPlusNum}>
-          {leftScreenData.map((imageUrl, index) => (
-            <img
-              src={imageUrl}
-              alt='leftScreen'
-              className={leftNum % 4 === index ? 'visible' : 'hidden'}
-            />
-          ))}
-          <video
-            src={leftVideo}
-            muted
-            loop
-            autoPlay
-            className={leftNum % 4 === 3 ? 'visible' : 'hidden'}
-          />
-        </LeftScreenS>
+        <Screen imgData={leftScreenData} VideoData={leftVideo}></Screen>
         <CenterTextS>willacreatvie.com</CenterTextS>
-        <RightScreenS onMouseEnter={rightPlusNum}>
-          {rightScreenData.map((imageUrl, index) => (
-            <img
-              src={imageUrl}
-              alt='rightScreen'
-              className={rightNum % 4 === index ? 'visible' : 'hidden'}
-            />
-          ))}
-          <video
-            src={rightVideo}
-            muted
-            loop
-            autoPlay
-            className={rightNum % 4 === 3 ? 'visible' : 'hidden'}
-          />
-        </RightScreenS>
+        <Screen imgData={rightScreenData} VideoData={rightVideo} videoFirstOption></Screen>
       </ScreenContainerS>
       <HomeCursor mousePosition={mousePosition}>willacreative.com</HomeCursor>
     </ContainerS>
@@ -96,35 +49,6 @@ const ScreenContainerS = styled.section`
   }
 `;
 
-const LeftScreenS = styled.article`
-  transition: all 1s;
-  @media screen and (max-width: 768px) {
-    width: 100%;
-    height: 50vh;
-  }
-  width: 50%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-  img,
-  video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transition: opacity 1s;
-    object-fit: cover;
-  }
-  .visible {
-    opacity: 1;
-  }
-
-  .hidden {
-    opacity: 0;
-  }
-`;
-
 const CenterTextS = styled.div`
   display: none;
   @media screen and (max-width: 768px) {
@@ -143,35 +67,6 @@ const CenterTextS = styled.div`
     text-align: center;
     text-transform: uppercase;
     padding: 5px;
-  }
-`;
-
-const RightScreenS = styled.article`
-  @media screen and (max-width: 768px) {
-    width: 100%;
-    height: 50vh;
-  }
-  object-fit: cover;
-  width: 50%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-  img,
-  video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transition: opacity 1s;
-    object-fit: cover;
-  }
-  .visible {
-    opacity: 1;
-  }
-
-  .hidden {
-    opacity: 0;
   }
 `;
 
