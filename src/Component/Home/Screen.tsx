@@ -31,7 +31,7 @@ export default Screen;
 const Container = styled.div`
   width: 50%;
   height: 100%;
-  transition: all 1s;
+  transition: opacity 1s;
   position: relative;
   overflow: hidden;
 
