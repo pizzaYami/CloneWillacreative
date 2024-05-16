@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
-import Footer from '../../Component/Footer';
-import Header from '../../Component/Header';
-import NavBar from '../../Component/NavBar';
+import Footer from '../../Component/common/Footer';
+import Header from '../../Component/common/Header';
+import NavBar from '../../Component/common/NavBar';
 import { workData } from '../../Data/workData';
 import WorkDoSection from './WorkDoSection';
 import WorkItem from './WorkItem';

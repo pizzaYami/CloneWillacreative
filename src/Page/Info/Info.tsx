@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { styled } from 'styled-components';
-import Footer from '../../Component/Footer';
-import Header from '../../Component/Header';
+import Footer from '../../Component/common/Footer';
+import Header from '../../Component/common/Header';
 import Capabilite from './Capabilites';
 import InfoSlide from './InfoSlide';
 
