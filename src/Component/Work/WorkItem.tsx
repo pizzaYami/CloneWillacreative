@@ -3,47 +3,31 @@ import { styled } from "styled-components";
 
 interface WorkItemType {
   workData: {
-    image?: string;
     title: string;
     content: string;
+    image?: string;
     video?: string;
   };
   row: 2 | 4;
-
   videoFirst?: boolean;
 }
 
 const WorkItem = ({ workData, row, videoFirst }: WorkItemType) => {
-  const [dataCase, setDataCase] = useState(0);
+  const [mediaDisplayCase, setMediaDisplayCase] = useState<
+    "OnlyImage" | "OnlyVideo" | "FirstImage" | "FirstVideo" | undefined
+  >();
   const { image, title, content, video } = workData;
 
-  // 이미지만 있으면 1
-  // 이미지와 비디오 있으며 이미지 먼저 보여주면 2
-  // 이미지와 비디오 있으며 비디오 먼저 보여주면 3
-  // 비디오만 있으면 4
-
   useEffect(() => {
-    if (image && !video) setDataCase(1);
-    if (image && video) setDataCase(2);
-    if (image && video && videoFirst) setDataCase(3);
-    if (!image && video) setDataCase(4);
-  }, []);
-
-  let videoBox = document.querySelector(".mediaBox");
-  const videoBoxHeight = videoBox
-    ? row === 2
-      ? videoBox.clientWidth / 1.35
-      : videoBox.clientWidth / 1.7
-    : "auto";
+    if (image && !video) setMediaDisplayCase("OnlyImage");
+    if (image && video) setMediaDisplayCase("FirstImage");
+    if (image && video && videoFirst) setMediaDisplayCase("FirstVideo");
+    if (!image && video) setMediaDisplayCase("OnlyVideo");
+  }, [image, video, videoFirst]);
 
   return (
-    <WorkS row={row} datacase={dataCase}>
-      <div
-        className="mediaBox"
-        style={{
-          height: videoBoxHeight,
-        }}
-      >
+    <WorkS row={row} mediaDisplayCase={mediaDisplayCase}>
+      <div className="mediaBox">
         <img src={image} alt={title} />
         <video src={video} muted loop autoPlay className="video" />
       </div>
@@ -55,17 +39,20 @@ const WorkItem = ({ workData, row, videoFirst }: WorkItemType) => {
 
 export default WorkItem;
 
-const WorkS = styled.div<{ row: 2 | 4; datacase: number }>`
+const WorkS = styled.div<{
+  row: 2 | 4;
+  mediaDisplayCase: "OnlyImage" | "OnlyVideo" | "FirstImage" | "FirstVideo" | undefined;
+}>`
   width: ${(props) => (props.row === 2 ? "50%" : "25%")};
+  @media screen and (max-width: 767px) {
+    width: ${(props) => (props.row === 2 ? "100%" : "50%")};
+  }
   height: 100%;
-  padding: 0 19px;
+  padding: 0 20px 20px;
   position: relative;
 
-  div{
-    width: 100%;
-    height: 100%;
-  }
-  img, video {
+  img,
+  video {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -73,21 +60,20 @@ const WorkS = styled.div<{ row: 2 | 4; datacase: number }>`
 
   img {
     display: ${(props) =>
-      props.datacase === 1 || props.datacase === 2
+      props.mediaDisplayCase === "OnlyImage" || props.mediaDisplayCase === "FirstImage"
         ? "block"
-        : props.datacase === 3 || props.datacase === 4
+        : props.mediaDisplayCase === "FirstVideo" || props.mediaDisplayCase === "OnlyVideo"
         ? "none"
         : "block"};
   }
 
   video {
     display: ${(props) =>
-      props.datacase === 1 || props.datacase === 2
+      props.mediaDisplayCase === "OnlyImage" || props.mediaDisplayCase === "FirstImage"
         ? "none"
-        : props.datacase === 3 || props.datacase === 4
+        : props.mediaDisplayCase === "FirstVideo" || props.mediaDisplayCase === "OnlyVideo"
         ? "block"
         : "none"};
-    padding-top: {calc(841 / 1024) * 100}
   }
 
   &:hover {
@@ -101,17 +87,17 @@ const WorkS = styled.div<{ row: 2 | 4; datacase: number }>`
     }
     img {
       display: ${(props) =>
-        props.datacase === 2 || props.datacase === 4
+        props.mediaDisplayCase === "FirstImage" || props.mediaDisplayCase === "OnlyVideo"
           ? "none"
-          : props.datacase === 3 || props.datacase === 1
+          : props.mediaDisplayCase === "FirstVideo" || props.mediaDisplayCase === "OnlyImage"
           ? "block"
           : "none"};
     }
     video {
       display: ${(props) =>
-        props.datacase === 2 || props.datacase === 4
+        props.mediaDisplayCase === "FirstImage" || props.mediaDisplayCase === "OnlyVideo"
           ? "block"
-          : props.datacase === 3 || props.datacase === 1
+          : props.mediaDisplayCase === "FirstVideo" || props.mediaDisplayCase === "OnlyImage"
           ? "none"
           : "block"};
     }
