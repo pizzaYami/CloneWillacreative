@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { styled } from 'styled-components';
+import { useEffect, useState } from "react";
+import { styled } from "styled-components";
 
 interface WorkItemType {
   workData: {
@@ -16,10 +16,12 @@ interface WorkItemType {
 const WorkItem = ({ workData, row, videoFirst }: WorkItemType) => {
   const [dataCase, setDataCase] = useState(0);
   const { image, title, content, video } = workData;
+
   // 이미지만 있으면 1
   // 이미지와 비디오 있으며 이미지 먼저 보여주면 2
   // 이미지와 비디오 있으며 비디오 먼저 보여주면 3
   // 비디오만 있으면 4
+
   useEffect(() => {
     if (image && !video) setDataCase(1);
     if (image && video) setDataCase(2);
@@ -27,23 +29,23 @@ const WorkItem = ({ workData, row, videoFirst }: WorkItemType) => {
     if (!image && video) setDataCase(4);
   }, []);
 
-  let videoBox = document.querySelector('.mediaBox');
+  let videoBox = document.querySelector(".mediaBox");
   const videoBoxHeight = videoBox
     ? row === 2
       ? videoBox.clientWidth / 1.35
       : videoBox.clientWidth / 1.7
-    : 'auto';
+    : "auto";
 
   return (
     <WorkS row={row} datacase={dataCase}>
       <div
-        className='mediaBox'
+        className="mediaBox"
         style={{
           height: videoBoxHeight,
         }}
       >
         <img src={image} alt={title} />
-        <video src={video} muted loop autoPlay className='video' />
+        <video src={video} muted loop autoPlay className="video" />
       </div>
       <h3>{title}</h3>
       <span>{content}</span>
@@ -54,7 +56,7 @@ const WorkItem = ({ workData, row, videoFirst }: WorkItemType) => {
 export default WorkItem;
 
 const WorkS = styled.div<{ row: 2 | 4; datacase: number }>`
-  width: ${(props) => (props.row === 2 ? '50%' : '25%')};
+  width: ${(props) => (props.row === 2 ? "50%" : "25%")};
   height: 100%;
   padding: 0 19px;
   position: relative;
@@ -72,19 +74,19 @@ const WorkS = styled.div<{ row: 2 | 4; datacase: number }>`
   img {
     display: ${(props) =>
       props.datacase === 1 || props.datacase === 2
-        ? 'block'
+        ? "block"
         : props.datacase === 3 || props.datacase === 4
-        ? 'none'
-        : 'block'};
+        ? "none"
+        : "block"};
   }
 
   video {
     display: ${(props) =>
       props.datacase === 1 || props.datacase === 2
-        ? 'none'
+        ? "none"
         : props.datacase === 3 || props.datacase === 4
-        ? 'block'
-        : 'none'};
+        ? "block"
+        : "none"};
     padding-top: {calc(841 / 1024) * 100}
   }
 
@@ -100,18 +102,18 @@ const WorkS = styled.div<{ row: 2 | 4; datacase: number }>`
     img {
       display: ${(props) =>
         props.datacase === 2 || props.datacase === 4
-          ? 'none'
+          ? "none"
           : props.datacase === 3 || props.datacase === 1
-          ? 'block'
-          : 'none'};
+          ? "block"
+          : "none"};
     }
     video {
       display: ${(props) =>
         props.datacase === 2 || props.datacase === 4
-          ? 'block'
+          ? "block"
           : props.datacase === 3 || props.datacase === 1
-          ? 'none'
-          : 'block'};
+          ? "none"
+          : "block"};
     }
   }
 
