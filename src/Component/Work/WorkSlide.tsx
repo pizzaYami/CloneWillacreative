@@ -3,28 +3,31 @@ import { styled } from "styled-components";
 import { WorkSlideData } from "../../constants/workConstant";
 
 const WorkSlide = () => {
-  const [isLazy, setIsLazy] = useState(false);
-  const [interval, setInterval] = useState(-200);
+  const [isActive, setIsActive] = useState(false);
+  const [translateX, setTranslateX] = useState(-200);
   const [slideNum, setSlideNum] = useState(0);
 
   useEffect(() => {
-    const lazyTimeout = setTimeout(() => setIsLazy(true), 500);
+    const lazyTimeout = setTimeout(() => setIsActive(true), 500);
     return () => clearTimeout(lazyTimeout);
   }, []);
 
-  setTimeout(() => {
-    setInterval((prev) => {
-      return prev - 80;
-    });
-    setSlideNum((prev) => {
-      return prev + 1;
-    });
-    WorkSlideData.push(WorkSlideData[slideNum % 6]);
-  }, 2000);
+  useEffect(() => {
+    const slideInterval = setInterval(() => {
+      setTranslateX((prev) => prev - 80);
+      setSlideNum((prev) => prev + 1);
+      WorkSlideData.push(WorkSlideData[slideNum % 6]);
+    }, 2000);
+
+    return () => {
+      clearInterval(slideInterval);
+    };
+  }, [slideNum]);
+
   return (
-    <Container className={isLazy ? "active" : ""}>
+    <Container className={isActive ? "active" : ""}>
       <ItemContainer>
-        <ItemS interval={interval}>
+        <ItemS translateX={translateX}>
           {WorkSlideData.map((data, index) => (
             <img key={index} src={data.img} alt={String(data.img)} />
           ))}
@@ -37,9 +40,10 @@ const WorkSlide = () => {
 export default WorkSlide;
 
 const Container = styled.div`
-  margin: 50px 0 85px 0;
+  position: relative;
   width: 100%;
   padding: 0 10px;
+  margin: 50px 0 85px 0;
   &::before {
     content: "";
     position: absolute;
@@ -63,7 +67,6 @@ const Container = styled.div`
   &.active {
     transform: translate(0);
     opacity: 1;
-    transition: all 0.9s ease-in;
     &::after {
       width: 100%;
       transition: width 0.9s ease-in;
@@ -76,14 +79,14 @@ const Container = styled.div`
 `;
 
 const ItemContainer = styled.div`
-  margin: 23px -39px;
+  margin: 25px -40px;
   position: relative;
   &::before {
     content: "";
     width: 50px;
     height: 50px;
     margin: 10px 25px 6px 0;
-    background-image: linear-gradient(to right, #fff 0%, #fff 50%, rgba(255, 255, 255, 0) 100%);
+    background-image: linear-gradient(to right, white 0%, white 50%, rgba(255, 255, 255, 0) 100%);
     position: absolute;
     left: 0;
     top: -24px;
@@ -94,7 +97,7 @@ const ItemContainer = styled.div`
     width: 50px;
     height: 50px;
     margin: 10px 0 6px 25px;
-    background-image: linear-gradient(to left, #fff 0%, #fff 50%, rgba(255, 255, 255, 0) 100%);
+    background-image: linear-gradient(to left, white 0%, white 50%, rgba(255, 255, 255, 0) 100%);
     position: absolute;
     right: 0;
     top: -24px;
@@ -102,16 +105,16 @@ const ItemContainer = styled.div`
   }
 `;
 
-const ItemS = styled.div<{ interval: number }>`
-  transform: ${(props) => `translate3d(${props.interval}px, 0px, 0px)`};
-  transition: transform 2000ms linear 0s;
+const ItemS = styled.div<{ translateX: Number }>`
+  transform: ${(props) => `translate(${props.translateX}px, 0px)`};
+  transition: transform 2s linear 0s;
   display: flex;
   img {
     float: left;
     width: 100%;
     height: 24px;
+    padding: 0 35px;
     align-items: center;
     justify-content: center;
-    padding: 0 35px;
   }
 `;
