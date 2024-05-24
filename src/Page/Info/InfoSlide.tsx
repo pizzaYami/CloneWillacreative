@@ -1,70 +1,6 @@
-import { useEffect, useState } from 'react';
-import { styled } from 'styled-components';
-import cultgaia from '../../img/cultgaia.svg';
-import barcord from '../../img/barcord.svg';
-import calpak from '../../img/calpak.svg';
-import dosist from '../../img/dosist.svg';
-import nicholas from '../../img/nicholas.svg';
-import facile from '../../img/facile.svg';
-
-const InfoSlideData = [
-  {
-    key: 0,
-    img: '',
-  },
-  {
-    key: 1,
-    img: cultgaia,
-  },
-  {
-    key: 2,
-    img: barcord,
-  },
-  {
-    key: 3,
-    img: calpak,
-  },
-  {
-    key: 4,
-    img: dosist,
-  },
-  {
-    key: 5,
-    img: nicholas,
-  },
-  {
-    key: 6,
-    img: facile,
-  },
-  {
-    key: 0,
-    img: '',
-  },
-  {
-    key: 1,
-    img: cultgaia,
-  },
-  {
-    key: 2,
-    img: barcord,
-  },
-  {
-    key: 3,
-    img: calpak,
-  },
-  {
-    key: 4,
-    img: dosist,
-  },
-  {
-    key: 5,
-    img: nicholas,
-  },
-  {
-    key: 6,
-    img: facile,
-  },
-];
+import { useEffect, useState } from "react";
+import { styled } from "styled-components";
+import { InfoSlideData } from "../../constants/infoConstant";
 
 const InfoSlide = () => {
   const [isLazy, setIsLazy] = useState(false);
@@ -86,7 +22,7 @@ const InfoSlide = () => {
     InfoSlideData.push(InfoSlideData[slideNum % 6]);
   }, 2000);
   return (
-    <Container className={isLazy ? 'active' : ''}>
+    <Container className={isLazy ? "active" : ""}>
       <ItemContainer>
         <ItemS interval={interval}>
           {InfoSlideData.map((data, index) => (
@@ -106,7 +42,7 @@ const Container = styled.div`
   margin: 50px 0 85px 0;
   padding: 0 10px;
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -116,7 +52,7 @@ const Container = styled.div`
     opacity: 0.5;
   }
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0;
     left: 0;
@@ -144,7 +80,7 @@ const ItemContainer = styled.div`
   margin: 23px -39px;
   position: relative;
   &::before {
-    content: '';
+    content: "";
     width: 50px;
     height: 50px;
     margin: 10px 25px 6px 0;
@@ -160,7 +96,7 @@ const ItemContainer = styled.div`
     z-index: 99;
   }
   &::after {
-    content: '';
+    content: "";
     width: 50px;
     height: 50px;
     margin: 10px 0 6px 25px;
