@@ -18,9 +18,9 @@ const Home = () => {
   return (
     <ContainerS onMouseMove={handleMouseMove} onClick={() => navigate("/work")}>
       <ScreenContainerS>
-        <Screen imgData={leftScreenData} VideoData={leftVideo}></Screen>
+        <Screen imgData={leftScreenData} VideoData={leftVideo} />
         <CenterTextS>willacreatvie.com</CenterTextS>
-        <Screen imgData={rightScreenData} VideoData={rightVideo} videoFirstOption></Screen>
+        <Screen imgData={rightScreenData} VideoData={rightVideo} videoFirstOption />
       </ScreenContainerS>
       <HomeCursor mousePosition={mousePosition}>willacreative.com</HomeCursor>
     </ContainerS>
