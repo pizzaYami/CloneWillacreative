@@ -1,70 +1,6 @@
-import { useEffect, useState } from 'react';
-import { styled } from 'styled-components';
-import awwords from '../../img/awwords.svg';
-import byrdie from '../../img/byrdie.svg';
-import cut from '../../img/cut.svg';
-import digiday from '../../img/digiday.svg';
-import forbes from '../../img/forbes.svg';
-import mindsParkls from '../../img/mindsParkls.svg';
-
-const WorkSlideData = [
-  {
-    key: 0,
-    img: '',
-  },
-  {
-    key: 1,
-    img: awwords,
-  },
-  {
-    key: 2,
-    img: byrdie,
-  },
-  {
-    key: 3,
-    img: cut,
-  },
-  {
-    key: 4,
-    img: digiday,
-  },
-  {
-    key: 5,
-    img: forbes,
-  },
-  {
-    key: 6,
-    img: mindsParkls,
-  },
-  {
-    key: 0,
-    img: '',
-  },
-  {
-    key: 1,
-    img: awwords,
-  },
-  {
-    key: 2,
-    img: byrdie,
-  },
-  {
-    key: 3,
-    img: cut,
-  },
-  {
-    key: 4,
-    img: digiday,
-  },
-  {
-    key: 5,
-    img: forbes,
-  },
-  {
-    key: 6,
-    img: mindsParkls,
-  },
-];
+import { useEffect, useState } from "react";
+import { styled } from "styled-components";
+import { WorkSlideData } from "../../constants/workConstant";
 
 const WorkSlide = () => {
   const [isLazy, setIsLazy] = useState(false);
@@ -86,7 +22,7 @@ const WorkSlide = () => {
     WorkSlideData.push(WorkSlideData[slideNum % 6]);
   }, 2000);
   return (
-    <Container className={isLazy ? 'active' : ''}>
+    <Container className={isLazy ? "active" : ""}>
       <ItemContainer>
         <ItemS interval={interval}>
           {WorkSlideData.map((data, index) => (
@@ -105,7 +41,7 @@ const Container = styled.div`
   width: 100%;
   padding: 0 10px;
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -115,7 +51,7 @@ const Container = styled.div`
     opacity: 0.5;
   }
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0;
     left: 0;
@@ -143,7 +79,7 @@ const ItemContainer = styled.div`
   margin: 23px -39px;
   position: relative;
   &::before {
-    content: '';
+    content: "";
     width: 50px;
     height: 50px;
     margin: 10px 25px 6px 0;
@@ -154,7 +90,7 @@ const ItemContainer = styled.div`
     z-index: 99;
   }
   &::after {
-    content: '';
+    content: "";
     width: 50px;
     height: 50px;
     margin: 10px 0 6px 25px;

@@ -1,3 +1,10 @@
+import awwordsLogo from "../assets/logo/awwords.svg";
+import byrdieLogo from "../assets/logo/byrdie.svg";
+import cutLogo from "../assets/logo/cut.svg";
+import digidayLogo from "../assets/logo/digiday.svg";
+import forbesLogo from "../assets/logo/forbes.svg";
+import mindsParklsLogo from "../assets/logo/mindsParkls.svg";
+
 export const workData = [
   {
     id: 0,
@@ -119,4 +126,63 @@ export const workDoSectionData = [
   { text: "web development", time: 1500 },
   { text: "content production", time: 2000 },
   { text: "web 3.0 & 3d design", time: 2000 },
+];
+
+export const WorkSlideData = [
+  {
+    key: 0,
+    img: "",
+  },
+  {
+    key: 1,
+    img: awwordsLogo,
+  },
+  {
+    key: 2,
+    img: byrdieLogo,
+  },
+  {
+    key: 3,
+    img: cutLogo,
+  },
+  {
+    key: 4,
+    img: digidayLogo,
+  },
+  {
+    key: 5,
+    img: forbesLogo,
+  },
+  {
+    key: 6,
+    img: mindsParklsLogo,
+  },
+  {
+    key: 0,
+    img: "",
+  },
+  {
+    key: 1,
+    img: awwordsLogo,
+  },
+  {
+    key: 2,
+    img: byrdieLogo,
+  },
+  {
+    key: 3,
+    img: cutLogo,
+  },
+  {
+    key: 4,
+    img: digidayLogo,
+  },
+  {
+    key: 5,
+    img: forbesLogo,
+  },
+  {
+    key: 6,
+    img: mindsParklsLogo,
+  },
 ];
