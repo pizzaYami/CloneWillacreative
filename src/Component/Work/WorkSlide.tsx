@@ -81,6 +81,7 @@ const Container = styled.div`
 const ItemContainer = styled.div`
   margin: 25px -40px;
   position: relative;
+  overflow: hidden;
   &::before {
     content: "";
     width: 50px;
