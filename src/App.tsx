@@ -1,9 +1,9 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./Page/Home";
-import Info from "./Page/Info/Info";
 import WorkPage from "./Page/WorkPage";
 import VntrsPage from "./Page/VntrsPage";
+import InfoPage from "./Page/InfoPage";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/work" element={<WorkPage />} />
       <Route path="/vntrs" element={<VntrsPage />} />
-      <Route path="/info" element={<Info />} />
+      <Route path="/info" element={<InfoPage />} />
     </Routes>
   );
 }

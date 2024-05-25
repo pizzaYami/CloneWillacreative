@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
-import { styled } from 'styled-components';
-import Footer from '../../Component/common/Footer';
-import Header from '../../Component/common/Header';
-import Capabilite from './Capabilites';
-import InfoSlide from './InfoSlide';
+import { useEffect, useState } from "react";
+import { styled } from "styled-components";
+import Footer from "../Component/common/Footer";
+import Header from "../Component/common/Header";
+import Capabilite from "../Component/Info/Capabilites";
+import InfoSlide from "../Component/Info/InfoSlide";
+import InfoBanner from "../Component/Info/InfoBanner";
 
-const Info = () => {
+const InfoPage = () => {
   const [isLazy, setIsLazy] = useState(false);
 
   useEffect(() => {
@@ -17,13 +18,7 @@ const Info = () => {
   return (
     <Container>
       <Header />
-      <InfoHeaderS>
-        <h3 className={isLazy ? 'active' : ''}>
-          WILLA is a creative company driven by purpose and built on collaboration. We partner with
-          intentional brands to build scalable solutions through strategy, art direction, technology
-          and design.
-        </h3>
-      </InfoHeaderS>
+      <InfoBanner isLazy={isLazy} />
       <InfoClient>
         <h4>Clients</h4>
         <div>
@@ -41,55 +36,24 @@ const Info = () => {
             of sectors, including fashion, luxury goods, art, publishing, beauty, media, retail and
             technology.
           </p>
-          <a href='mailto:info@willacreative.com'>CONTACT US</a>
+          <a href="mailto:info@willacreative.com">CONTACT US</a>
         </div>
       </InfoClient>
-      <InfoSlide></InfoSlide>
-      <Capabilite></Capabilite>
-      <Careers></Careers>
+      <InfoSlide />
+      <Capabilite />
+      <Careers />
       <Footer />
     </Container>
   );
 };
 
-export default Info;
+export default InfoPage;
 
 const Container = styled.div`
   width: 100%;
   height: 100%;
   background-color: black;
   color: white;
-`;
-
-const InfoHeaderS = styled.div`
-  padding: 63px 39px 0;
-  float: left;
-  width: 100%;
-  h3 {
-    font-size: 74px;
-    letter-spacing: -2.96px;
-    color: #fff;
-    float: left;
-    width: 100%;
-    padding: 0 0 86px;
-    margin: 0;
-    position: relative;
-    &::after {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      height: 1px;
-      background: #fff;
-      content: '';
-      width: 0px;
-      transition: width 0.9s ease-in;
-    }
-    &.active {
-      &::after {
-        width: 100%;
-      }
-    }
-  }
 `;
 
 const InfoClient = styled.div`
