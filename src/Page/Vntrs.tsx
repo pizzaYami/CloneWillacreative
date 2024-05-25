@@ -1,16 +1,16 @@
-import { styled } from 'styled-components';
-import Footer from '../Component/common/Footer';
-import Header from '../Component/common/Header';
-import NavBar from '../Component/common/NavBar';
+import { styled } from "styled-components";
+import Footer from "../Component/common/Footer";
+import Header from "../Component/common/Header";
+import NavBar from "../Component/common/NavBar";
 
 const Vntrs = () => {
   return (
     <Container>
       <Header />
-      <NavBar bgBtn={false} list={['about', 'portfolio', 'contact']} />
+      <NavBar bgBtn={false} navBarList={["about", "portfolio", "contact"]} />
       <ContentWrapper>
         <video
-          src='https://player.vimeo.com/progressive_redirect/playback/794669238/rendition/1080p/file.mp4?loc=external&signature=5274a5b50d2853953af90c3a4d60b32325f27b4007a4d670d35160068bc88d47'
+          src="https://player.vimeo.com/progressive_redirect/playback/794669238/rendition/1080p/file.mp4?loc=external&signature=5274a5b50d2853953af90c3a4d60b32325f27b4007a4d670d35160068bc88d47"
           muted
           loop
           autoPlay

@@ -1,19 +1,23 @@
-import { styled } from 'styled-components';
+import { styled } from "styled-components";
+interface NavBarType {
+  bgBtn: boolean;
+  navBarList: string[];
+}
 
-const NavBar = ({ bgBtn, list }: { bgBtn: boolean; list: string[] }) => {
+const NavBar = ({ bgBtn, navBarList }: NavBarType) => {
   return (
     <NavBarS>
       <ul>
-        {list.map((item) => {
+        {navBarList.map((item) => {
           return <li>{item}</li>;
         })}
       </ul>
       {bgBtn ? (
         <BGBtn>
-          <span className=''>we don't do color but you can</span>
+          <span>we don't do color but you can</span>
           <img
-            src='https://willacreative.com/wp-content/themes/twentytwelve/images/circle-animation.png'
-            alt='colorCircle'
+            src="https://willacreative.com/wp-content/themes/twentytwelve/images/circle-animation.png"
+            alt="colorCircle"
           />
         </BGBtn>
       ) : null}

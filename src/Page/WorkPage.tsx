@@ -7,7 +7,7 @@ function WorkPage() {
   return (
     <>
       <Header />
-      <NavBar bgBtn={true} list={["all", "web", "content", "branding"]} />
+      <NavBar bgBtn={true} navBarList={["all", "web", "content", "branding"]} />
       <WorkContents />
       <Footer />
     </>
