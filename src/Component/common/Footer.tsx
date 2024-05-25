@@ -1,49 +1,52 @@
-import { useEffect, useState } from 'react';
-import { styled } from 'styled-components';
+import { useEffect, useState } from "react";
+import { styled } from "styled-components";
 
 const Footer = () => {
   const [timer, setTimer] = useState(0);
 
   const date = new Date();
-  const hours = String(date.getHours()).padStart(2, '0');
-  const minutes = String(date.getMinutes()).padStart(2, '0');
+  const hours = String(date.getHours()).padStart(2, "0");
+  const minutes = String(date.getMinutes()).padStart(2, "0");
 
   useEffect(() => {
-    setInterval(() => {
-      setTimer((props) => (props + 1) % 3);
-    }, 2000);
+    const interval = setInterval(() => {
+      setTimer((prev) => (prev + 1) % 6);
+    }, 1000);
+
+    return () => clearInterval(interval);
   }, [timer]);
 
-  const changeProud = (): string => {
-    if (timer === 0) {
-      return 'latina';
+  const changeProud = () => {
+    if (timer < 2) {
+      return "latina";
     }
-    if (timer === 1) {
-      return 'founded';
+    if (timer < 4) {
+      return "founded";
     }
-    if (timer === 2) {
-      return 'female';
+    if (timer < 6) {
+      return "female";
     }
-    return '';
   };
 
   return (
     <Container>
       <FooterWrap>
-        <FooterMenu className='menu'>
+        <FooterMenu className="menu">
           <li>instagram</li>
           <li>Linkedin</li>
           <li>tik tok</li>
         </FooterMenu>
-        <FooterMail className='mail'>
+        <FooterMail className="mail">
           inquiries:
           <div>info@willacreative.com</div>
         </FooterMail>
-        <FooterRight className='bottom'>
+        <FooterRight className="bottom">
           <li>{`${hours}:${minutes} GMT+9`}</li>
           <li>© since 2012</li>
-          <li>proudly </li>
-          {/* <li>{changeProud()}</li> */}
+          <li>
+            proudly
+            <span className={timer % 2 ? "fade_out" : "fade_in"}>{changeProud()}</span>
+          </li>
         </FooterRight>
       </FooterWrap>
     </Container>
@@ -75,7 +78,7 @@ const FooterWrap = styled.div`
   .bottom {
     order: 3;
   }
-  @media screen and (max-width: 1198px) {
+  @media screen and (max-width: 1023px) {
     flex-direction: column;
     align-items: center;
     .mail {
@@ -91,7 +94,9 @@ const FooterWrap = styled.div`
 `;
 
 const FooterMenu = styled.ul`
+  width: 100%;
   display: flex;
+  justify-content: flex-start;
   gap: 24px;
   cursor: pointer;
   li {
@@ -99,11 +104,15 @@ const FooterMenu = styled.ul`
       text-transform: uppercase;
     }
   }
+  @media screen and (max-width: 1023px) {
+    justify-content: center;
+  }
 `;
 
 const FooterMail = styled.div`
   display: flex;
-
+  justify-content: center;
+  width: 100%;
   div {
     cursor: pointer;
     &:hover {
@@ -111,19 +120,28 @@ const FooterMail = styled.div`
     }
   }
 `;
+
 const FooterRight = styled.ul`
   display: flex;
   justify-content: space-between;
-  gap: 24px;
-
-  :nth-child(4) {
-    width: 100px;
-    transition: 1000ms;
+  width: 100%;
+  gap: 20px;
+  li {
+    display: flex;
+    white-space: nowrap;
   }
-  .fade_out {
-    opacity: 0;
-  }
-  .fade_in {
-    opacity: 1;
+  span {
+    display: flex;
+    justify-content: flex-end;
+    min-width: 60px;
+    margin-left: 5px;
+    &.fade_out {
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+    &.fade_in {
+      opacity: 1;
+      transition: opacity 0.5s;
+    }
   }
 `;
