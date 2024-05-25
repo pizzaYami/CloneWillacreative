@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
   padding: 0; /* padding 초기화 */
   font: inherit; /* font 상속을 못하는 요소(button, input)에게 폰트 적용을 위해 작성 */
   color: inherit; /* a, input, textarea에도 동일한 글자색 적용을 위해 작성 */
+  font-weight: 600;
 }
 
 li {
